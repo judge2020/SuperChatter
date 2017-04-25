@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="242.47" Width="535.542">
     <Grid>
-
+        <TextBlock Name="Block" Margin="36,10,19,63"></TextBlock>
+        <Button Margin="92,153,92,0" Click="Button_Click">Fake call with message "LUL xd"</Button>
     </Grid>
 </Window>

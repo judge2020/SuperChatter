@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Google.Apis.YouTube.v3.Data;
+using SuperChatter.Core;
 
 namespace SuperChatter
 {
@@ -23,6 +25,25 @@ namespace SuperChatter
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			CoreService.Instance.Startup();
+
+			var coreLoop = CoreLoop.Instance;
+			coreLoop.NewSuperChat += CoreLoopOnNewSuperChat;
+		}
+
+		private void CoreLoopOnNewSuperChat(SuperChatEventSnippet snippet)
+		{
+			Block.Text = snippet.CommentText;
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			var eventtt = new SuperChatEventSnippet()
+			{
+				CommentText = "LUL xd"
+			};
+			CoreLoopOnNewSuperChat(eventtt);
 		}
 	}
 }
